@@ -12,12 +12,12 @@ type CreateUrlDto struct {
 	ShortenedUrl string `json:"url" validate:"required"`
 }
 
-type UrlRepository interface {
+type IUrlRepository interface {
 	FindById(id string) (*Url, error)
-	Create(payload Url) (*Url, error)
+	Create(payload CreateUrlDto) (*Url, error)
 }
 
-type UrlUsecase interface {
+type IUrlUsecase interface {
 	FindById(id string) (*Url, error)
 	Create(payload CreateUrlDto) (*Url, error)
 }
