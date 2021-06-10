@@ -1,4 +1,4 @@
-package domain
+package response
 
 // ErrorResponse object
 type ErrorResponse struct {
