@@ -19,7 +19,7 @@ func (u *urlUsecase) FindById(id string) (*url.Url, error) {
 	return result, err
 }
 
-func (u *urlUsecase) Create(payload url.CreateUrlDto) (*url.Url, error) {
+func (u *urlUsecase) Create(payload *url.CreateUrlDto) (*url.Url, error) {
 	result, err := u.urlRepository.Create(payload)
 	return result, err
 }

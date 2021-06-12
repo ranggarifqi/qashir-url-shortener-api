@@ -21,7 +21,7 @@ func (r *urlRepository) FindById(id string) (*url.Url, error) {
 	return &res, err
 }
 
-func (r *urlRepository) Create(payload url.CreateUrlDto) (*url.Url, error) {
+func (r *urlRepository) Create(payload *url.CreateUrlDto) (*url.Url, error) {
 	user := url.Url{
 		Url: payload.Url,
 	}

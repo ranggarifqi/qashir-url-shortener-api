@@ -47,7 +47,7 @@ func (h *urlHandler) Create(c echo.Context) error {
 		return helper.HandleHttpError(c, err)
 	}
 
-	result, err := h.urlUsecase.Create(*urlDto)
+	result, err := h.urlUsecase.Create(urlDto)
 	if err != nil {
 		return helper.HandleHttpError(c, err)
 	}

@@ -24,10 +24,10 @@ type CreateUrlDto struct {
 
 type IUrlRepository interface {
 	FindById(id string) (*Url, error)
-	Create(payload CreateUrlDto) (*Url, error)
+	Create(payload *CreateUrlDto) (*Url, error)
 }
 
 type IUrlUsecase interface {
 	FindById(id string) (*Url, error)
-	Create(payload CreateUrlDto) (*Url, error)
+	Create(payload *CreateUrlDto) (*Url, error)
 }
