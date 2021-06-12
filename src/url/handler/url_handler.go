@@ -26,7 +26,7 @@ func (h *urlHandler) FindById(c echo.Context) error {
 	id := c.Param("id")
 	res, err := h.urlUsecase.FindById(id)
 	if err != nil {
-		return helper.HandleHttpError(c, err)
+		return helper.HandleHttpError(c, err, http.StatusNotFound)
 	}
 
 	return c.JSON(http.StatusOK, response.SuccessResponse{
@@ -40,16 +40,16 @@ func (h *urlHandler) Create(c echo.Context) error {
 	urlDto := new(url.CreateUrlDto)
 	err := c.Bind(urlDto)
 	if err != nil {
-		return helper.HandleHttpError(c, err)
+		return helper.HandleHttpError(c, err, http.StatusInternalServerError)
 	}
 
 	if err = c.Validate(urlDto); err != nil {
-		return helper.HandleHttpError(c, err)
+		return helper.HandleHttpError(c, err, http.StatusBadRequest)
 	}
 
 	result, err := h.urlUsecase.Create(urlDto)
 	if err != nil {
-		return helper.HandleHttpError(c, err)
+		return helper.HandleHttpError(c, err, http.StatusInternalServerError)
 	}
 
 	return c.JSON(http.StatusOK, response.SuccessResponse{

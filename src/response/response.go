@@ -2,13 +2,13 @@ package response
 
 // ErrorResponse object
 type ErrorResponse struct {
-	StatusCode int
-	Message    string
+	StatusCode int    `json:"statusCode"`
+	Message    string `json:"message"`
 }
 
 // SuccessResponse ...
 type SuccessResponse struct {
-	StatusCode int
-	Message    string
-	Data       interface{}
+	StatusCode int         `json:"statusCode"`
+	Message    string      `json:"message"`
+	Data       interface{} `json:"data"`
 }

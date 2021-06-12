@@ -16,6 +16,7 @@ require (
 	github.com/mattn/go-sqlite3 v1.14.7 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pressly/goose v2.7.0+incompatible // indirect
+	github.com/stretchr/testify v1.7.0
 	github.com/ziutek/mymysql v1.5.4 // indirect
 	golang.org/x/crypto v0.0.0-20210513164829-c07d793c2f9a // indirect
 	gopkg.in/jcmturner/aescts.v1 v1.0.1 // indirect
