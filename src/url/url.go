@@ -8,9 +8,9 @@ import (
 )
 
 type Url struct {
-	ID           string    `json:"id"`
-	ShortenedUrl string    `json:"url" validate:"required" gorm:"not null"`
-	CreatedAt    time.Time `json:"created_at"`
+	ID        string    `json:"id"`
+	Url       string    `json:"url" validate:"required" gorm:"not null"`
+	CreatedAt time.Time `json:"created_at"`
 }
 
 func (u *Url) BeforeCreate(tx *gorm.DB) (err error) {
@@ -19,7 +19,7 @@ func (u *Url) BeforeCreate(tx *gorm.DB) (err error) {
 }
 
 type CreateUrlDto struct {
-	ShortenedUrl string `json:"url" validate:"required"`
+	Url string `json:"url" validate:"required"`
 }
 
 type IUrlRepository interface {

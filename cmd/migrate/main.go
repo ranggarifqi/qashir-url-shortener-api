@@ -19,7 +19,7 @@ func main() {
 		return
 	}
 
-	dir := "./database/postgresql/migration"
+	dir := "./cmd/migrate"
 
 	dbString, err := postgresql.GetDBString()
 	helper.HandleError("GetDBString Error", err)

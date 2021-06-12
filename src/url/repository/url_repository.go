@@ -23,7 +23,7 @@ func (r *urlRepository) FindById(id string) (*url.Url, error) {
 
 func (r *urlRepository) Create(payload url.CreateUrlDto) (*url.Url, error) {
 	user := url.Url{
-		ShortenedUrl: payload.ShortenedUrl,
+		Url: payload.Url,
 	}
 	err := r.conn.Create(&user).Error
 	return &user, err

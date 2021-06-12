@@ -1,5 +1,5 @@
 build-migration:
-	go build -o migration cmd/migrate/main.go
+	go build -o migration cmd/migrate/*.go
 
 migration-create: build-migration
 	./migration create $(NAME)
