@@ -22,11 +22,17 @@ migration-version: build-migration
 migration-fix: build-migration
 	./migration fix
 
-build:
+build: migration-up
 	go build -o api cmd/api/main.go
 
 run: build
 	./api
+
+run-docker:
+	@docker-compose up
+
+run-docker-build:
+	@docker-compose up --build
 
 test:
 	go test -v ./...
