@@ -28,11 +28,14 @@ build: migration-up
 run: build
 	./api
 
-run-docker:
+docker:
+	@docker build -t ranggarifqi/qashir_api:latest .
+
+run-docker: docker
 	@docker-compose up
 
-run-docker-build:
-	@docker-compose up --build
+stop-docker:
+	@docker-compose down
 
 test:
 	go test -v ./...

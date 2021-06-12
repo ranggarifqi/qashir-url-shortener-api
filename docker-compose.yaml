@@ -11,8 +11,7 @@ services:
       - 5433:5432
   api:
     restart: 'always'
-    build:
-      context: .
+    image: ranggarifqi/qashir_api:latest
     env_file: 
       - .env
     ports: 
