@@ -17,7 +17,7 @@ func NewUrlRepository(conn *gorm.DB) url.IUrlRepository {
 
 func (r *urlRepository) FindById(id string) (*url.Url, error) {
 	var res url.Url
-	err := r.conn.First(&res, id).Error
+	err := r.conn.First(&res, "id=?", id).Error
 	return &res, err
 }
 
