@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"github.com/ranggarifqi/qashir-ap/src/url"
+	"github.com/ranggarifqi/qashir-api/src/url"
 	"gorm.io/gorm"
 )
 

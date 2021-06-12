@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
-	"github.com/ranggarifqi/qashir-api/response"
+	"github.com/ranggarifqi/qashir-api/src/response"
 )
 
 // HandleError ...
