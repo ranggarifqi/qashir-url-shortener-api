@@ -28,4 +28,7 @@ build:
 run: build
 	./api
 
-.PHONY: build run
+test:
+	go test -v ./...
+
+.PHONY: build run test
