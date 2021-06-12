@@ -1,4 +1,7 @@
 .env
 
-migrate
-migrate.exe
+migration
+migration.exe
+
+api
+api.exe
