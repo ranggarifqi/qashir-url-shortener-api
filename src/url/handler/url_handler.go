@@ -25,7 +25,7 @@ func (h *urlHandler) FindById(c echo.Context) error {
 	id := c.Param("id")
 	res, err := h.urlUsecase.FindById(id)
 	if err != nil {
-		return helper.HandleError(c, err)
+		return helper.HandleHttpError(c, err)
 	}
 
 	return c.JSON(http.StatusOK, response.SuccessResponse{

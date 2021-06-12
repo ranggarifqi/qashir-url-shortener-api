@@ -2,14 +2,21 @@ package helper
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
 	"github.com/ranggarifqi/qashir-api/src/response"
 )
 
-// HandleError ...
-func HandleError(c echo.Context, err error) error {
+func HandleError(msg string, err error) {
+	if err != nil {
+		log.Fatalf("%v: %v\n", msg, err)
+	}
+}
+
+// HandleHttpError ...
+func HandleHttpError(c echo.Context, err error) error {
 
 	code := http.StatusInternalServerError
 	message := err.Error()
