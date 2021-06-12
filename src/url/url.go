@@ -19,7 +19,7 @@ func (u *Url) BeforeCreate(tx *gorm.DB) (err error) {
 }
 
 type CreateUrlDto struct {
-	Url string `json:"url" form:"url" validate:"required"`
+	Url string `json:"url" form:"url" validate:"required,url"`
 }
 
 type IUrlRepository interface {
