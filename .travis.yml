@@ -5,7 +5,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t ranggarifqi/qashir-api .
+  - docker build -f ./Dockerfile.dev -t ranggarifqi/qashir_api_dev .
 
 script:
-  - docker run -e CGO_ENABLED=0 ranggarifqi/qashir-api go test ./...
+  - docker run -e CGO_ENABLED=0 ranggarifqi/qashir_api_dev make test
