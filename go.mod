@@ -6,6 +6,7 @@ require (
 	github.com/ClickHouse/clickhouse-go v1.4.5 // indirect
 	github.com/alexbrainman/sspi v0.0.0-20180613141037-e580b900e9f5 // indirect
 	github.com/denisenkom/go-mssqldb v0.10.0 // indirect
+	github.com/go-playground/validator/v10 v10.6.1
 	github.com/go-sql-driver/mysql v1.6.0 // indirect
 	github.com/jackc/pgproto3/v2 v2.0.7 // indirect
 	github.com/jcmturner/gokrb5/v8 v8.2.0 // indirect

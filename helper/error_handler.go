@@ -17,7 +17,6 @@ func HandleError(msg string, err error) {
 
 // HandleHttpError ...
 func HandleHttpError(c echo.Context, err error) error {
-
 	code := http.StatusInternalServerError
 	message := err.Error()
 

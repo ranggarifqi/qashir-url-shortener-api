@@ -19,6 +19,7 @@ func NewUrlHandler(g *echo.Group, urlUsecase url.IUrlUsecase) {
 	}
 
 	g.GET("/url/:id", handler.FindById)
+	g.POST("/url", handler.Create)
 }
 
 func (h *urlHandler) FindById(c echo.Context) error {
@@ -32,5 +33,28 @@ func (h *urlHandler) FindById(c echo.Context) error {
 		StatusCode: http.StatusOK,
 		Message:    "Data fetched successfully",
 		Data:       res,
+	})
+}
+
+func (h *urlHandler) Create(c echo.Context) error {
+	urlDto := new(url.CreateUrlDto)
+	err := c.Bind(urlDto)
+	if err != nil {
+		return helper.HandleHttpError(c, err)
+	}
+
+	if err = c.Validate(urlDto); err != nil {
+		return helper.HandleHttpError(c, err)
+	}
+
+	result, err := h.urlUsecase.Create(*urlDto)
+	if err != nil {
+		return helper.HandleHttpError(c, err)
+	}
+
+	return c.JSON(http.StatusOK, response.SuccessResponse{
+		StatusCode: http.StatusOK,
+		Message:    "Data created successfully",
+		Data:       *result,
 	})
 }

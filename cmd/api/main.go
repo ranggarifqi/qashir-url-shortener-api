@@ -5,6 +5,7 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/ranggarifqi/qashir-api/database/postgresql"
+	myValidator "github.com/ranggarifqi/qashir-api/src/validator"
 
 	urlH "github.com/ranggarifqi/qashir-api/src/url/handler"
 	urlRepo "github.com/ranggarifqi/qashir-api/src/url/repository"
@@ -13,6 +14,7 @@ import (
 
 func main() {
 	e := echo.New()
+	e.Validator = myValidator.NewMyValidator()
 
 	db := postgresql.InitDB()
 
@@ -20,10 +22,11 @@ func main() {
 		return c.String(http.StatusOK, "Hello World")
 	})
 
-	urlGroup := e.Group("/url")
+	v1Group := e.Group("/api/v1")
+
 	urlRepository := urlRepo.NewUrlRepository(db)
 	urlUsecase := urlUC.NewUrlUsecase(urlRepository)
-	urlH.NewUrlHandler(urlGroup, urlUsecase)
+	urlH.NewUrlHandler(v1Group, urlUsecase)
 
 	e.Logger.Fatal(e.Start(":3000"))
 }
