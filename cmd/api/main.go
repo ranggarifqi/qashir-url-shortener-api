@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 	"github.com/ranggarifqi/qashir-api/database/postgresql"
 	myValidator "github.com/ranggarifqi/qashir-api/src/validator"
 
@@ -14,6 +15,12 @@ import (
 
 func main() {
 	e := echo.New()
+
+	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{"http://localhost:8000", "https://qashir.ranggarifqi.com"},
+		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
+	}))
+
 	e.Validator = myValidator.NewMyValidator()
 
 	db := postgresql.InitDB()
