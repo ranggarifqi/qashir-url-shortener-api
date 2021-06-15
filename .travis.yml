@@ -10,10 +10,15 @@ before_install:
 script:
   - docker run -e CGO_ENABLED=0 ranggarifqi/qashir-backend-dev make test
 
-after_success:
-  - docker build -t ranggarifqi/qashir-backend .
-  # Login to heroku
-  - heroku auth:token
-  - heroku container:login
-  - heroku container:push web
-  - heroku container:release web
+deploy:
+  provider: script
+  script:
+    - docker build -t ranggarifqi/qashir-backend .
+    # Login to heroku
+    - curl https://cli-assets.heroku.com/install.sh | sh
+    - heroku auth:token
+    - heroku container:login
+    - heroku container:push web
+    - heroku container:release web
+  on:
+    branch: main
