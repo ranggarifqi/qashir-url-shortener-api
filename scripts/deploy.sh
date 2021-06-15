@@ -5,4 +5,4 @@ heroku auth:token
 docker login --username=_ --password=$(heroku auth:token) registry.heroku.com
 docker tag ranggarifqi/qashir-backend registry.heroku.com/qashir-backend/web
 docker push registry.heroku.com/qashir-backend/web
-heroku container:release web
+heroku container:release web --app=qashir-backend
