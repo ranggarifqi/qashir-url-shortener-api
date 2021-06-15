@@ -21,10 +21,7 @@ func InitDB() *gorm.DB {
 }
 
 func GetDBString() (string, error) {
-	err := godotenv.Load()
-	if err != nil {
-		return "", err
-	}
+	godotenv.Load()
 
 	if os.Getenv("DATABASE_URL") != "" {
 		return os.Getenv("DATABASE_URL"), nil
