@@ -12,13 +12,6 @@ script:
 
 deploy:
   provider: script
-  script:
-    - docker build -t ranggarifqi/qashir-backend .
-    # Login to heroku
-    - curl https://cli-assets.heroku.com/install.sh | sh
-    - heroku auth:token
-    - heroku container:login
-    - heroku container:push web
-    - heroku container:release web
+  script: bash scripts/deploy.sh
   on:
     branch: main
