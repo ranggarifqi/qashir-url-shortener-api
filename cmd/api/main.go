@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"os"
 
@@ -38,5 +39,5 @@ func main() {
 	urlUsecase := urlUC.NewUrlUsecase(urlRepository)
 	urlH.NewUrlHandler(v1Group, urlUsecase)
 
-	e.Logger.Fatal(e.Start(os.Getenv("PORT")))
+	e.Logger.Fatal(e.Start(fmt.Sprintf(":%v", os.Getenv("PORT"))))
 }
