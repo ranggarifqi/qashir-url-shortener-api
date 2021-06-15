@@ -22,6 +22,14 @@ func InitDB() *gorm.DB {
 
 func GetDBString() (string, error) {
 	err := godotenv.Load()
+	if err != nil {
+		return "", err
+	}
+
+	if os.Getenv("DATABASE_URL") != "" {
+		return os.Getenv("DATABASE_URL"), nil
+	}
+
 	dsn := fmt.Sprintf("host=%v user=%v password=%v dbname=%v port=%v sslmode=%v", os.Getenv("PG_HOST"), os.Getenv("PG_USER"), os.Getenv("PG_PASSWORD"), os.Getenv("PG_DBNAME"), os.Getenv("PG_PORT"), os.Getenv("PG_SSLMODE"))
-	return dsn, err
+	return dsn, nil
 }
