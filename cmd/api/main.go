@@ -2,7 +2,9 @@ package main
 
 import (
 	"net/http"
+	"os"
 
+	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/ranggarifqi/qashir-api/database/postgresql"
@@ -14,6 +16,7 @@ import (
 )
 
 func main() {
+	godotenv.Load()
 	e := echo.New()
 
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
@@ -35,5 +38,5 @@ func main() {
 	urlUsecase := urlUC.NewUrlUsecase(urlRepository)
 	urlH.NewUrlHandler(v1Group, urlUsecase)
 
-	e.Logger.Fatal(e.Start(":3000"))
+	e.Logger.Fatal(e.Start(os.Getenv("PORT")))
 }
